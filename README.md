@@ -106,28 +106,32 @@ An API key is required.
 
 1. Clone the project
 https://github.com/svfukuyoshi/WeatherApp
+
 git clone https://github.com/svfukuyoshi/WeatherApp.git
 
-2. Navigate to the project directory:
+3. Navigate to the project directory:
 
 
-3. Install dependencies:
+4. Install dependencies:
 npm install
 or
 yarn install
 
-4. Install iOS Dependencies. Need to go to ios folder.
+5. Install iOS Dependencies. Need to go to ios folder.
 pod install
 
-5. Go back to project directory and start Metro Bundler
+6. Go back to project directory and start Metro Bundler
 npx react-native start
 
 6.Run the app
+
 **iOS**
+
 npx react-native run-ios
 
 
 **Android**
+
 npx react-native run-android
 
 ---
