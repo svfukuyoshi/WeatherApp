@@ -33,42 +33,6 @@ zipped project folder.
 
 ---
 
-## Architecture (MVVM)
-
-The app follows the **MVVM** pattern for clear separation of concerns.
-
-src/
-├── api/
-│ ├── apiError.ts
-│ ├── axiosInstance.ts
-│ └── weather.ts
-│
-├── model/
-│ └── Weather.ts
-│
-├── navigation/
-│ └── AppNavigator.tsx
-│
-├── storage/
-│ └── city.ts
-│
-├── utils/
-│ ├── network.ts
-│ └── weather.ts
-│
-├── view/
-│ ├── SearchScreen.tsx
-│ ├── SearchScreen.styles.ts
-│ ├── DetailsScreen.tsx
-│ └── DetailsScreen.styles.ts
-│
-├── viewmodel/
-│ └── useWeather.ts
-
-
-
----
-
 ## MVVM Responsibilities
 
 ### Model
