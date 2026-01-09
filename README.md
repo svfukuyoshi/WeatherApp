@@ -1,97 +1,205 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# 🌤️ React Native Weather App
 
-# Getting Started
+A React Native Weather Application built using **TypeScript** and the
+**MVVM (Model–View–ViewModel)** architecture.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+This project was created as a technical exercise and is provided as a
+zipped project folder.
 
-## Step 1: Start Metro
+---
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## Features
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+### Search Screen
+- Search weather by city name
+- Fetches real-time weather data
+- Displays:
+  - City name
+  - Current temperature
+  - Weather description
 
-```sh
-# Using npm
-npm start
+### Details Screen
+- Displays:
+  - Humidity
+  - Wind speed
+  - Minimum temperature
+  - Maximum temperature
 
-# OR using Yarn
-yarn start
-```
+### Others
+- Loading indicator
+- Error handling (city not found, network errors)
+- TypeScript
+- Persist last searched city using AsyncStorage
 
-## Step 2: Build and run your app
+---
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+## Architecture (MVVM)
 
-### Android
+The app follows the **MVVM** pattern for clear separation of concerns.
 
-```sh
-# Using npm
-npm run android
+src/
+├── api/
+│ ├── apiError.ts
+│ ├── axiosInstance.ts
+│ └── weather.ts
+│
+├── model/
+│ └── Weather.ts
+│
+├── navigation/
+│ └── AppNavigator.tsx
+│
+├── storage/
+│ └── city.ts
+│
+├── utils/
+│ ├── network.ts
+│ └── weather.ts
+│
+├── view/
+│ ├── SearchScreen.tsx
+│ ├── SearchScreen.styles.ts
+│ ├── DetailsScreen.tsx
+│ └── DetailsScreen.styles.ts
+│
+├── viewmodel/
+│ └── useWeather.ts
 
-# OR using Yarn
-yarn android
-```
 
-### iOS
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+---
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+## MVVM Responsibilities
 
-```sh
-bundle install
-```
+### Model
+- Defines domain models and TypeScript interfaces
+- Represents the structure of weather data
+- Located in: `model/`
 
-Then, and every time you update your native dependencies, run:
+### View
+- Contains UI components and screens
+- Responsible only for rendering data
+- No business or networking logic
+- Uses `StyleSheet` for styling
+- Located in: `view/`
 
-```sh
-bundle exec pod install
-```
+### ViewModel
+- Acts as the bridge between View and Model
+- Handles:
+  - API calls and data fetching
+  - Loading and error states
+  - Data transformation and formatting
+- Exposes state and actions consumed by the views
+- Located in: `viewmodel/`
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+### Supporting Layers
 
-```sh
-# Using npm
-npm run ios
+#### API
+- Handles all external API communication
+- Centralizes Axios configuration and error handling
+- Keeps networking logic separate from UI
+- Located in: `api/`
 
-# OR using Yarn
-yarn ios
-```
+#### Navigation
+- Manages application navigation and screen flow
+- Configures React Navigation stacks and routes
+- Isolated from UI and business logic
+- Located in: `navigation/`
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+#### Storage
+- Manages local persistence using AsyncStorage
+- Stores and retrieves the last searched city
+- Located in: `storage/`
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+#### Utils
+- Contains shared, stateless helper functions
+- Includes network checks and weather-related utilities
+- Reused across the application
+- Located in: `utils/`
 
-## Step 3: Modify your app
+---
 
-Now that you have successfully run the app, let's make changes!
+## 🔌 API
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+- OpenWeatherMap – Current Weather API
+- Weather fetched by city name
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+An API key is required.
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+---
 
-## Congratulations! :tada:
+## 🚀 Setup Instructions
 
-You've successfully run and modified your React Native App. :partying_face:
+### Prerequisites
+- Node.js (>= 16)
+- npm or yarn
+- React Native development environment
+- Android Studio or Xcode
 
-### Now what?
+---
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+### Installation
 
-# Troubleshooting
+1. Extract the zipped project
+2. Navigate to the project directory:
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
 
-# Learn More
+3. Install dependencies:
+npm install
+or
+yarn install
 
-To learn more about React Native, take a look at the following resources:
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+---
+
+### API Key Setup
+
+The OpenWeatherMap API key is stored in `config.js` at the project root.
+
+This file is included in the zipped submission **only for evaluation purposes**.
+In a real-world application, the API key would be excluded from version control
+and managed securely (e.g., environment variables).
+
+---
+
+### Run the App
+
+**iOS**
+npx react-native run-ios
+
+
+**Android**
+npx react-native run-android
+
+---
+
+## Error Handling
+
+- Invalid city name
+- Network connectivity issues
+- API failures
+
+User-friendly messages are displayed in the UI.
+
+---
+
+## Persistence
+
+- The last searched city and weather is saved using AsyncStorage
+- Restored automatically when the app restarts
+
+---
+
+## Assumptions
+
+- Temperature units are metric (°C)
+- Internet connection is required
+- App prioritizes clean architecture and readability
+
+
+---
+
+## Notes
+
+This project is submitted as a zipped folder for evaluation purposes.
+
