@@ -104,7 +104,10 @@ An API key is required.
 
 ### Installation
 
-1. Extract the zipped project
+1. Clone the project
+https://github.com/svfukuyoshi/WeatherApp
+git clone https://github.com/svfukuyoshi/WeatherApp.git
+
 2. Navigate to the project directory:
 
 
@@ -113,6 +116,19 @@ npm install
 or
 yarn install
 
+4. Install iOS Dependencies. Need to go to ios folder.
+pod install
+
+5. Go back to project directory and start Metro Bundler
+npx react-native start
+
+6.Run the app
+**iOS**
+npx react-native run-ios
+
+
+**Android**
+npx react-native run-android
 
 ---
 
@@ -120,20 +136,9 @@ yarn install
 
 The OpenWeatherMap API key is stored in `config.js` at the project root.
 
-This file is included in the zipped submission **only for evaluation purposes**.
+This file is included in the repository **only for evaluation purposes**.
 In a real-world application, the API key would be excluded from version control
 and managed securely (e.g., environment variables).
-
----
-
-### Run the App
-
-**iOS**
-npx react-native run-ios
-
-
-**Android**
-npx react-native run-android
 
 ---
 
@@ -160,10 +165,4 @@ User-friendly messages are displayed in the UI.
 - Internet connection is required
 - App prioritizes clean architecture and readability
 
-
----
-
-## Notes
-
-This project is submitted as a zipped folder for evaluation purposes.
 
