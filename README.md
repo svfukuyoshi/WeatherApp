@@ -121,9 +121,10 @@ yarn install
 pod install
 
 6. Go back to project directory and start Metro Bundler
+
 npx react-native start
 
-6.Run the app
+7. Run the app
 
 **iOS**
 
